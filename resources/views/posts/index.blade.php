@@ -8,6 +8,10 @@
         <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
     </head>
+    <x-app-layout>
+        <x-slot name="header">
+            index
+        </x-slot>
     <body class="antialiased">
         <h1>Blog Name</h1>
         <a href='/posts/create'>create</a>
@@ -37,5 +41,16 @@
                 }
             }
         </script>
+        {{ Auth::user()->name }}
+        <div>
+            @foreach($questions as $question)
+                <div>
+                    <a href="https://teratail.com/questions/{{ $question['id'] }}">
+                        {{ $question['title'] }}
+                    </a>
+                </div>
+            @endforeach
+        </div>
     </body>
+    </x-app-layout>
 </html>
